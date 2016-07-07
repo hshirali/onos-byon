@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 package org.onos.byon;
-
+//import org.onos.byon.onosMastership;
+import org.onosproject.cli.AbstractShellCommand;
 import com.codahale.metrics.Timer;
 import com.codahale.metrics.Timer.Context;
 import com.google.common.collect.Lists;
@@ -47,15 +48,14 @@ import static org.onosproject.security.AppGuard.checkPermission;
 import static org.onosproject.security.AppPermission.Type.CLUSTER_READ;
 import static org.onosproject.security.AppPermission.Type.CLUSTER_WRITE;
 import static org.slf4j.LoggerFactory.getLogger;
-
-
+import org.apache.karaf.shell.commands.Command;
 
 @Component(immediate = true)
 @Service
 public class onosMastershipManager
     extends AbstractListenerManager<MastershipEvent, MastershipListener>
     implements MastershipService, MastershipAdminService, MastershipTermService,
-        MetricsHelper {
+        MetricsHelper,onosMastership {
 
     private static final String NODE_ID_NULL = "Node ID cannot be null";
     private static final String DEVICE_ID_NULL = "Device ID cannot be null";
@@ -87,14 +87,14 @@ public class onosMastershipManager
         localNodeId = clusterService.getLocalNode().id();
         //eventDispatcher.addSink(MastershipEvent.class, listenerRegistry);
         //store.setDelegate(delegate);
-        log.info("Started");
+        log.info("shirali: activate Started");
     }
 
     @Deactivate
     public void deactivate() {
         //eventDispatcher.removeSink(MastershipEvent.class);
         //store.unsetDelegate(delegate);
-        log.info("Stopped");
+        log.info("shirali: deactivate Stopped");
     }
 
     @Override
@@ -185,13 +185,19 @@ public class onosMastershipManager
         return metricsService;
     }
 
+
+    @Override
+    public void mybalanceRoles() {
+
+        balanceRoles();
+    }
     @Override
     public void balanceRoles() {
         List<ControllerNode> nodes = newArrayList(clusterService.getNodes());
         Map<ControllerNode, Set<DeviceId>> controllerDevices = new HashMap<>();
         int deviceCount = 0;
 
-
+        log.info("shirali :balanceRoles started");
 
         // Create buckets reflecting current ownership.
         for (ControllerNode node : nodes) {

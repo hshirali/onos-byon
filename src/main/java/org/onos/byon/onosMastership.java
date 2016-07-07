@@ -14,25 +14,18 @@
  * limitations under the License.
  */
 
-package org.onos.byon.cli;
+package org.onos.byon;
 
-import org.apache.karaf.shell.commands.Command;
-import org.onos.byon.onosMastership;
-import org.onosproject.cli.AbstractShellCommand;
-import org.onosproject.mastership.MastershipAdminService;
 import org.onosproject.net.HostId;
-import org.onos.byon.onosMastershipManager;
+
+import java.util.Set;
 
 /**
- * CLI to list networks.
+ * Tracks networks and their hosts.
  */
-@Command(scope="byon", name="balance-onos", description = "balance-onos")
-public class OnosBalanceCommand extends AbstractShellCommand {
+// TODO Lab 6: Extend Store<NetworkEvent, NetworkStoreDelegate>
+public interface onosMastership {
 
-    @Override
-    protected void execute() {
-        print("ali");
-        log.info("shirali: execute test");
-        get(onosMastership.class).mybalanceRoles();
-    }
+    void mybalanceRoles();
+
 }
