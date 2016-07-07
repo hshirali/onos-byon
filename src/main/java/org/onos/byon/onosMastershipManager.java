@@ -85,15 +85,15 @@ public class onosMastershipManager
     public void activate() {
         requestRoleTimer = createTimer("Mastership", "requestRole", "responseTime");
         localNodeId = clusterService.getLocalNode().id();
-        eventDispatcher.addSink(MastershipEvent.class, listenerRegistry);
-        store.setDelegate(delegate);
+        //eventDispatcher.addSink(MastershipEvent.class, listenerRegistry);
+        //store.setDelegate(delegate);
         log.info("Started");
     }
 
     @Deactivate
     public void deactivate() {
-        eventDispatcher.removeSink(MastershipEvent.class);
-        store.unsetDelegate(delegate);
+        //eventDispatcher.removeSink(MastershipEvent.class);
+        //store.unsetDelegate(delegate);
         log.info("Stopped");
     }
 
