@@ -85,4 +85,10 @@ public interface NetworkService {
      * @param listener listener
      */
     //TODO Lab 6: Add removeListener to the interface (uncomment the line)
+
+    /**
+     * onos balance
+     */
+    void balanceonos();
+
 }

@@ -31,7 +31,9 @@
             </completers>
         </command>
         <!-- TODO Lab 4: Insert RemoveHostCommand and RemoveNetworkCommand here-->
-
+        <command>
+            <action class="org.onos.byon.cli.OnosBalanceCommand"/>
+        </command>
     </command-bundle>
 
     <bean id="hostIdCompleter" class="org.onosproject.cli.net.HostIdCompleter"/>

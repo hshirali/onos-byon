@@ -261,4 +261,10 @@ public class NetworkManager implements NetworkService {
      * The class should implement the NetworkStoreDelegate interface and
      * its notify method.
      */
+
+    public void balanceonos()
+    {
+
+    }
+
 }
